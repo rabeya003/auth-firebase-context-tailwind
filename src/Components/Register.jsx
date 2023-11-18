@@ -14,22 +14,22 @@ const Register = () => {
     const name = e.target.name.value;
     console.log(email, password, name);
     // Password Valodation
-    // if (!/(?=.*[A-Z])/.test(password)) {
-    //   toast.error("Please add at least one uppercase letter");
-    //   return;
-    // } else if (!/(?=.*\d)/.test(password)) {
-    //   toast.error("Please add at least one number");
-    //   return;
-    // } else if (password.length < 6) {
-    //   toast.error("Please add at least 6 characters in your password");
-    //   return;
-    // }
+    if (!/(?=.*[A-Z])/.test(password)) {
+      toast.error("Please add at least one uppercase letter");
+      return;
+    } else if (!/(?=.*\d)/.test(password)) {
+      toast.error("Please add at least one number");
+      return;
+    } else if (password.length < 6) {
+      toast.error("Please add at least 6 characters in your password");
+      return;
+    }
     createUser(email, password)
       .then((result) => {
         const user = result.user;
         console.log(user);
         e.target.reset();
-        toast.success("User loged successfully");
+        toast.success("User register successfully");
       })
       .catch((error) => {
         console.log(error.massage);

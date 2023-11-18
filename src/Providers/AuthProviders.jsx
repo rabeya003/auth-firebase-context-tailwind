@@ -12,7 +12,7 @@ const AuthProviders = ({ children }) => {
   const [user, setUser] = useState(null);
 
   const createUser = (email, password) => {
-    return createUserWithEmailAndPassword(email, password, auth);
+    return createUserWithEmailAndPassword(auth, email, password);
   };
 
   const signIn = (email, password) => {
