@@ -5,7 +5,7 @@ import { AuthProvider } from "../Providers/AuthProviders";
 
 const Login = () => {
   // Context Api
-  const { signIn } = useContext(AuthProvider);
+  const { signIn, google } = useContext(AuthProvider);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -31,6 +31,16 @@ const Login = () => {
       })
       .catch((error) => {
         toast.error(error);
+      });
+  };
+  const handleGoole = () => {
+    google()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        console.log(error);
       });
   };
   return (
@@ -72,11 +82,17 @@ const Login = () => {
             </div>
             <div className="form-control mt-6">
               <button className="btn btn-primary">Login</button>
+              <button
+                onClick={handleGoole}
+                className="btn btn-primary my-2 mx-6"
+              >
+                Google
+              </button>
             </div>
           </form>
           <Link to="/register">
             <button className="btn btn-active btn-link">
-              Are you New to Auth master?Please Register.
+              Are you New to app? Please Register.
             </button>
           </Link>
         </div>
